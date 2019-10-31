@@ -1,0 +1,346 @@
+---
+title: PathSimR Summary Report
+output: 
+    word_document:
+        reference_docx: template.docx
+params: 
+        total_time_in_system: NA
+        total_time_in_system_summary: NA
+        node_wait: NA
+        node_wait_summary: NA
+        pat_wait: NA
+        pat_wait_summary: NA
+        node_active_service: NA
+        node_active_service_summary: NA
+        pat_active_service: NA
+        pat_active_service_summary: NA
+        node_capacity_delay: NA
+        node_capacity_delay_summary: NA
+        pat_capacity_delay: NA
+        pat_capacity_delay_summary: NA
+        node_transition_delay: NA
+        node_transition_delay_summary: NA
+        pat_transition_delay: NA
+        pat_transition_delay_summary: NA
+        node_length_of_stay: NA
+        node_length_of_stay_summary: NA
+        pat_length_of_stay: NA
+        pat_length_of_stay_summary: NA
+        node_delay_to_transfer: NA
+        node_delay_to_transfer_summary: NA
+        pat_delay_to_transfer: NA
+        pat_delay_to_transfer_summary: NA
+        pat_rep_summary: NA
+        pat_total_summary: NA
+        ptd_percent: NA
+        ptd_plot: NA
+        avg_delayed: NA
+        avg_delayed_summary: NA
+        d: NA
+        ptq_percent: NA
+        ptq_plot: NA
+        avg_queue: NA
+        avg_queue_summary: NA
+        q: NA
+        pto_percent: NA
+        pto_plot: NA
+        avg_occupancy: NA
+        avg_occupancy_summary: NA
+        o: NA
+        ptb_percent: NA
+        ptb_plot: NA
+        avg_occ_bed: NA
+        avg_occ_bed_summary: NA
+        b: NA
+        ptt_percent: NA
+        ptt_plot: NA
+        avg_transition: NA
+        avg_transition_summary: NA
+        t: NA
+        dpercentiles: NA
+        qpercentiles: NA
+        opercentiles: NA
+        bpercentiles: NA
+        tpercentiles: NA
+        rejected_summary: NA
+        avg_through_time_plot: NA
+        reps: NA
+        ptm: NA
+        avg_through_time: NA
+        nodes: NA
+        warm_up: NA
+        sim_time: NA
+        exits: NA
+        syst_names: NA
+        delay_list: NA
+        cap_cal_input: NA
+        arr_cal_input: NA
+        time_unit: NA
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Report Summary
+
+
+The basic time unit assumed in this simulation is ***`r params$time_unit`***.
+
+All time-based metrics (such as time at occupancy, time delayed, average length of stay, average time in queue) should be interepreted on this scale, unless reported as percentages/cumulative percentages of time - in which case they should be interpreted as percentages of the total time period the simulation represented - in this case ***`r paste(params$sim_time,params$time_unit,sep=" ")`***.
+
+
+## Introduction to the network
+### Network Description
+The following table shows a breakdown of the service points and exits included in the analysis. The exits are split by whether there is a prescribed delay present to that exit or not in the simulation. 
+
+
+```{r, echo=FALSE}
+a<-params$syst_names[params$nodes,2]
+b<-params$syst_names[params$exits[params$exits %in% unique(params$delay_list[,2])],2]
+c<-params$syst_names[params$exits[!params$exits %in% unique(params$delay_list[,2])],2]
+
+
+max.len = max(length(a), length(b), length(c))
+
+a<-c(a, rep("", max.len - length(a)))
+b<-c(b, rep("", max.len - length(b)))
+c<-c(c, rep("", max.len - length(c)))
+
+sp_exit<-cbind(a,b,c)
+colnames(sp_exit)<-c("Service Points","Exits (w/ delay)","Exits (w/o delay)")
+knitr::kable(sp_exit,caption="",fig.align = "centre")
+```
+
+
+
+
+### Important Calendar Features
+The External Arrival Rate & Capacity are able to change at given times throughout the simulation. These changes occur at times set in the respective calendars below. 
+
+#### Capacity Calendar
+If there is no change in the capacity through time for a service point, there will be a 0 in the start column and a single capacity value in the Capacity column . If the capacity does change through time for a service point, there will be a row for each period in sequence, matching the end times with the subsequent start times. The simulation will loop through the calendar (i.e. will reach the max end time and then start again from the first calendar entry).
+
+```{r, echo=FALSE}
+x<-params$cap_cal_input
+x<-as.data.frame(x)
+x<-x[,2:5]
+x$node<-params$syst_names[c(as.numeric(x$node)),2]
+#rownames(x)<-c("")
+knitr::kable(x,caption="",align = "c")
+```
+
+#### External Arrivals Calendar
+If there is no change in the external arrival rate through time for a service point, there will be a 0 in the start column and a single arrival rate value in the Arrival Rate column . If the arrival rate does change through time for a service point, there will be a row for each period in sequence, matching the end times with the subsequent start times. The simulation will loop through the calendar (i.e. will reach the max end time and then start again from the first calendar entry).
+
+```{r, echo=FALSE}
+x<-params$arr_cal_input
+x<-as.data.frame(x)
+x<-x[,2:5]
+x$node<-params$syst_names[c(as.numeric(x$node)),2]
+#rownames(x)<-c()
+knitr::kable(x,caption="",align = "c")
+```
+
+## Patient-based Metrics 
+
+### Patient Pathway metrics
+```{r, echo=FALSE}
+x<-params$pat_total_summary
+x[,2:5]<-round(x[,2:5],digits=2)
+knitr::kable(x,caption="",align = "c")
+```
+
+### Total time in system
+Metrics surrounding the amount of time between arrival to the pathway and departure to an exit for all patients. 
+```{r, echo=FALSE}
+x<-params$total_time_in_system_summary
+x[,2:5]<-round(x[,2:5],digits=2)
+knitr::kable(x,caption="")
+```
+
+### Waits 
+Metrics surrounding the amount of time between arrival to a service point and service start for all patients, broken down by service point. 
+```{r, echo=FALSE}
+x<-params$node_wait_summary
+x[,3:6]<-round(x[,3:6],digits=2)
+knitr::kable(x,caption="")
+```
+
+### Active Service 
+Metrics surrounding the amount of time between service start at a service point and service end for all patients, broken down by service point. 
+```{r, echo=FALSE}
+x<-params$node_active_service_summary
+x[,3:6]<-round(x[,3:6],digits=2)
+knitr::kable(x,caption="")
+```
+
+### Capacity Delay
+Metrics surrounding the amount of time experiencing a capacity driven delay for all patients, broken down by service point. 
+```{r, echo=FALSE}
+x<-params$node_capacity_delay_summary
+x[,3:6]<-round(x[,3:6],digits=2)
+knitr::kable(x,caption="")
+```
+
+### Transition Delay 
+Metrics surrounding the amount of time experiencing a transition delay for all patients, broken down by service point. 
+```{r, echo=FALSE}
+x<-params$node_transition_delay_summary
+x[,3:6]<-round(x[,3:6],digits=2)
+knitr::kable(x,caption="")
+```
+
+
+### Length of Stay
+Metrics surrounding the length of stay for all patients, broken down by service point. The length of stay is defined as the time between starting service and departing the service point, i.e. sum of service time, delay to transfer due to capcaity and any prescribed transition delay.
+```{r, echo=FALSE}
+x<-params$node_length_of_stay_summary
+x[,3:6]<-round(x[,3:6],digits=2)
+knitr::kable(x,caption="")
+```
+
+### Delay to Transfer
+Metrics surrounding the amount of time patients are delayed in a unit due to capacity constraints downstream & transition delays.
+```{r, echo=FALSE}
+x<-params$node_delay_to_transfer_summary
+x[,3:6]<-round(x[,3:6],digits=2)
+knitr::kable(x,caption="")
+```
+
+### Rejection Rate
+Rate at which patients are lost at full external queues, split by service point.
+```{r, echo=FALSE}
+x<-params$rejected_summary
+x[,2]<-round(x[,2],digits = 2)
+knitr::kable(params$rejected_summary,caption="")
+```
+
+
+## Service Point Metrics 
+
+### Occupancy
+The Occupancy in PathSimR is the number of patients who are receiving or have received service and are occupying a space in the service point.
+#### Percentage time at Occupancy
+```{r pto, echo=FALSE,dpi = 300,fig.height = 5, fig.width = 9}
+params$pto_plot
+```
+
+#### Occupancy Percentiles  
+```{r, echo=FALSE}
+knitr::kable(params$opercentiles,caption="")
+```
+
+#### Average Occupancy 
+```{r, echo=FALSE}
+knitr::kable(params$avg_occupancy_summary,caption="")
+```
+
+
+### Bed Occupancy
+
+The Bed Occupancy in PathSimR is the same as the Occupancy but also includes any beds that are currently reserved for patients under transition delay upstream.
+#### Percentage time at Bed Occupancy
+```{r ptb, echo=FALSE,dpi = 300,fig.height = 5, fig.width = 9}
+params$ptb_plot
+```
+
+#### Bed Occupancy Percentiles  
+```{r, echo=FALSE}
+knitr::kable(params$bpercentiles,caption="")
+```
+
+#### Average Bed Occupancy 
+```{r, echo=FALSE}
+knitr::kable(params$avg_occ_bed_summary,caption="")
+```
+
+### Delayed
+Delayed tracks the number of patients concurrently delayed due to insufficient capcaity downstream.
+#### Percentage time at Delayed level
+```{r ptd, echo=FALSE,dpi = 300,fig.height = 5, fig.width = 9}
+params$ptd_plot
+```
+
+#### Delayed Percentiles  
+```{r, echo=FALSE}
+knitr::kable(params$dpercentiles,caption="")
+```
+
+#### Average Delayed
+```{r, echo=FALSE}
+knitr::kable(params$avg_delayed_summary,caption="")
+```
+
+### Transition
+Transition tracks the number of patients concurrently experiencing a prescribed transfer delay.	Patients moving to downstream will also be reserving a space in the onward service point and thus appear in the bed occupancy metric for that unit.Patients are included in the occupancy and bed occupancy of the current service point.
+
+#### Percentage time at Transition level
+```{r ptt, echo=FALSE,dpi = 300,fig.height = 5, fig.width = 9}
+params$ptt_plot
+```
+
+#### Transition Percentiles  
+```{r, echo=FALSE}
+knitr::kable(params$tpercentiles,caption="")
+```
+
+#### Average Transition 
+```{r, echo=FALSE}
+knitr::kable(params$avg_transition_summary,caption="")
+```
+
+### Queue
+Queue tracks the number of patients waiting to be seen at a service point.
+#### Percentage time at Queue length
+```{r ptq, echo=FALSE,dpi = 300,fig.height = 5, fig.width = 9}
+params$ptq_plot
+```
+
+#### Queue Percentiles  
+```{r, echo=FALSE}
+knitr::kable(params$qpercentiles,caption="")
+```
+
+#### Average Queue
+```{r, echo=FALSE}
+knitr::kable(params$avg_queue_summary,caption="")
+```
+
+### Average through time plot
+
+```{r attp, echo=FALSE,dpi = 300,fig.height = 5, fig.width = 9}
+params$avg_through_time_plot
+```
+
+## Metric Definitions
+The table below outlines all metrics reported in this document. 
+
+| Metric                  | Description                                                                                                                                                                                                                                                                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|**Total time in system**    | Time between External Arrival and Departure to an Exit                                                                                                                                                                                                                                                   |
+| **Wait**                    | Time between Arrival and Service Start                                                                                                                                                                                                                                                                   |
+| **Active Service**          | Time between Service Start and Service End                                                                                                                                                                                                                                                               |
+| **Capacity Delay**          | Time experiencing a capacity driven delay                                                                                                                                                                                                                                                              |
+| **Transition Delay**          | Time experiencing a transition delay                                                                                                                                                                                                                                                              |
+| **Length of Stay (LOS)**    | Time between Service Start and Departure (Active Service + Delay to Transfer + Transition delay)                                                                                                                                                                                                         |
+| **Delay to Transfer (DTT)** | Time between Service End and Departure                                                                                                                                                                                                                                                      |
+| **Rejection Rate**          | Number of patients rejected from full external queues divided by the length of the simulation run                                                                                                                                                                                                        |
+| **Occupancy**               | Number of patients who are receiving or have received service and are occupying a space in the unit.                                                                                                                                                                                                     |
+| **Bed Occupancy**           | Same as occupancy above but also includes any beds that are currently reserved for patients under transition delay upstream                                                                                                                                                                              |
+| **Transition Delay**              | Number of patients concurrently experiencing a prescribed transfer delay. Patients moving to downstream nodes will also be reserving a space in the onward node and thus appear in the bed occupancy metric for that unit. Patients are included in the occupancy and bed occupancy of the current node. |
+| **Capacity Driven Delay**                   | Number of patients concurrently delayed due to insufficient capacity downstream                                                                                                                                                                                                                          |
+| **Queue**                   | Number of concurrent patients who have arrived at a service point and are yet to start the service                                                                                                                                                                                                       |
+| **% time at level**         | Total amount of time (summed across all replicates) that the node existed at a certain metric level e.g. The queue at node A was 5 for 150 time units out of a simulation total of 1500 therefore is 10%.                                                                                                |
+| **Percentiles**             | Percentiles are calculated as an inversion of the % time at level tables. Find the interpolated value associated a percentile value and then ceiling the value to find the actual number of spaces needed.                                                                                               |
+|                         |                                                                                                                                                                                                                                                                                                          |
+## Appendix
+<!-- ### % time at Occupancy -->
+<!-- ```{r, echo=FALSE} -->
+<!-- knitr::kable(pto_percent,caption="") -->
+<!-- ``` -->
+
+<!-- ### % time at Bed Occupancy -->
+<!-- ```{r, echo=FALSE} -->
+<!-- knitr::kable(ptb_percent,caption="") -->
+<!-- ``` -->

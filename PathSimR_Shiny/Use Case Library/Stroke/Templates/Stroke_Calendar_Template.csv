@@ -1,0 +1,9 @@
+metric,node,start,end,value
+cap,HASU,0,,40
+cap,ASU,0,,35
+cap,SA1,0,,20
+cap,SA2,0,,20
+ext_arr,HASU,0,,5.14
+ext_arr,ASU,0,,0
+ext_arr,SA1,0,,0
+ext_arr,SA2,0,,0

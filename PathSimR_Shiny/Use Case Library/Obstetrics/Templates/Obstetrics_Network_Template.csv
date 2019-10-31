@@ -1,0 +1,9 @@
+,Triage,APM,APNM,LD,PP,PACU,MSW,Home,serv_dist,serv_dist_param,ext_queue,int_queue,Triage_delay_dist,APM_delay_dist,APNM_delay_dist,LD_delay_dist,PP_delay_dist,PACU_delay_dist,MSW_delay_dist,Home_delay_dist,Triage_delay_params,APM_delay_params,APNM_delay_params,LD_delay_params,PP_delay_params,PACU_delay_params,MSW_delay_params,Home_delay_params
+Triage,0,0.0162,0.0138,0.385,0,0,0,0.585,lnorm,1.04;0.51,9999,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+APM,0,0,0,0.5,0,0,0,0.5,lnorm,4.831;0.1257,9999,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+APNM,0,0,0,0.25,0,0,0,0.75,lnorm,4.831;0.1257,9999,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+LD,0,0.07,0.03,0,0.6497,0.2403,0.01,0,lnorm,2.008;0.3818,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+PP,0,0,0,0,0,0,0,1,gamma,3.45;0.0738,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+PACU,0,0,0,0,0,0,0,1,unif,3;4,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+MSW,0,0,0,0,0,0,0,1,lnorm,4.2191;0.1252,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Home,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

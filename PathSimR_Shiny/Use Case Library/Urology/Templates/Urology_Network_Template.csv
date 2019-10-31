@@ -1,0 +1,12 @@
+,GP_Ref,H_C,H_D,H_W,B_B,BCT,CC,CF,SC,SF,Home,serv_dist,serv_dist_param,ext_queue,int_queue,GP_Ref_delay_dist,H_C_delay_dist,H_D_delay_dist,H_W_delay_dist,B_B_delay_dist,BCT_delay_dist,CC_delay_dist,CF_delay_dist,SC_delay_dist,SF_delay_dist,Home_delay_dist,GP_Ref_delay_params,H_C_delay_params,H_D_delay_params,H_W_delay_params,B_B_delay_params,BCT_delay_params,CC_delay_params,CF_delay_params,SC_delay_params,SF_delay_params,Home_delay_params
+GP_Ref,0,0.5,0,0,0.15,0.35,0,0,0,0,0,unif,0.2;0.4,9999,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+H_C,0,0,0.9,0,0,0,0,0,0,0,0.1,unif,0.25;0.75,0,9999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+H_D,0,0,0,0.2,0,0,0,0,0,0,0.8,unif,0.25;0.75,0,9999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+H_W,0,0,0,0,0,0,0,0.5,0,0.5,0,exp,0.0104,0,9999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+B_B,0,0,0,0,0,1,0,0,0,0,0,unif,0.25;0.5,0,9999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+BCT,0,0,0,0,0,0,0.4,0,0.4,0,0.2,unif,0.25;0.5,0,9999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+CC,0,0,0.1,0,0,0,0,0.1,0,0,0.8,unif,0.25;0.75,0,9999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+CF,0,0,0,0,0,0,0,0,0,0,1,unif,0.25;0.75,0,9999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+SC,0,0,0,0,0,0,0,0,0,0.1,0.9,unif,0.25;0.75,0,9999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+SF,0,0,0,0,0,0,0,0,0,0,1,unif,0.25;0.75,0,9999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Home,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

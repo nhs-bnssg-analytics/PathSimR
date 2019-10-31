@@ -1,0 +1,7 @@
+metric,node,start,end,value
+cap,A,0,,15
+cap,B,0,,15
+cap,C,0,,15
+ext_arr,A,0,,2
+ext_arr,B,0,,0
+ext_arr,C,0,,0

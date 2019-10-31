@@ -1,0 +1,9 @@
+,Shock_room,Intensive_treatment,Observation,Emergency_yellow,Emergency_green,Examination,Admission,Discharge,serv_dist,serv_dist_param,ext_queue,int_queue,Shock_room_delay_dist,Intensive_treatment_delay_dist,Observation_delay_dist,Emergency_yellow_delay_dist,Emergency_green_delay_dist,Examination_delay_dist,Admission_delay_dist,Discharge_delay_dist,Shock_room_delay_params,Intensive_treatment_delay_params,Observation_delay_params,Emergency_yellow_delay_params,Emergency_green_delay_params,Examination_delay_params,Admission_delay_params,Discharge_delay_params
+Shock_room,0,0.975,0,0,0,0,0,0.025,lnorm,-0.88056;1.1467,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Intensive_treatment,0,0,0,0,0,0.1,0.8,0.1,lnorm,-0.88056;1.1467,0,0,NA,NA,NA,NA,NA,NA,unif,NA,NA,NA,NA,NA,NA,NA,0.5;0.5,NA
+Observation,0,0,0,0.5,0,0,0.25,0.25,lnorm,-1.4285;1.6902,999,0,NA,NA,NA,NA,NA,NA,unif,NA,NA,NA,NA,NA,NA,NA,0.5;0.5,NA
+Emergency_yellow,0,0,0,0,0,0.3,0.6,0.1,lnorm,-0.97632;1.3974,999,999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Emergency_green,0,0,0,0,0,0,0.3,0.7,lnorm,-0.40614;0.90126,999,999,NA,NA,NA,NA,NA,NA,unif,NA,NA,NA,NA,NA,NA,NA,0.5;0.5,NA
+Examination,0,0,0,0.5,0.1,0,0.2,0.2,lnorm,-2.2664;1.1463,0,999,NA,NA,NA,NA,NA,NA,unif,NA,NA,NA,NA,NA,NA,NA,0.5;0.5,NA
+Admission,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Discharge,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

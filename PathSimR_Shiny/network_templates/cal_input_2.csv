@@ -1,0 +1,11 @@
+metric,node,start,end,value
+cap,hasu,0,,30
+cap,asu,0,,30
+cap,subbris,0,,18
+cap,subns,0,,12
+cap,subsg,0,,14
+ext_arr,hasu,0,,5.14
+ext_arr,asu,0,,0
+ext_arr,subbris,0,,0
+ext_arr,subns,0,,0
+ext_arr,subsg,0,,0
