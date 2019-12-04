@@ -1,7 +1,11 @@
 # PathSimR
 Discrete event simulation of healthcare pathways in R.
 
-To use PathSimR, download the entire **PathSimR_Shiny** folder and run the script **PathSimR_Shiny_v1.R** from that location. This will launch a Shiny app. To use the tool, follow the instructions on the screen.
+To use PathSimR, download the entire **PathSimR_Shiny** folder and run the script **PathSimR_Shiny_v1.R** from that location and click the RunApp button. This will launch a Shiny app.
+
+If when clicking the RunApp button you get the error message ***Error in shinyAppyDir(x) : No Shiny applciation exists at the path ""***, (which may happen depending on your local network settings), then run the folowing line in the console to launch the app: ***shiny::runApp("PathSimR_Shiny_v1.R")*** 
+
+To use the tool, follow the instructions on the screen.
 
 The *PathSimR_Report.Rmd* and the *template.docx* files are called from within the app to create a downloadable Rmarkdown report and do not need to be opened or run separately unless you wish to alter the report format (e.g. replace the Word template with one containing your own organisation's branding).
 
