@@ -1735,9 +1735,6 @@ ui <- navbarPage(
                          <p>Runs a small number of replications (10) to allow users to (i) estimate a warm up period, (ii) get an idea of roughly how long per replication the simulation will take to run, and (iii) sense check the outputs, all before committing potentially substnatial amounts of computer time and resource to a full simulation run with a large number of replications.</p>
                          
                          <p>The only input required is the the simulation period. Outputs will be restricted to the Warm-up Period Assistance and Average Through Time tabs when in Trial Simulation mode.</p>
-                         
-                         <p>The number of computer CPU cores committed to the simulation will be automatically restricted in Trial mode.</p>
-                         
 
                          <h4>Full Simulation </h4>
                          <p> Performs the full simulation, with a large number of replications to achieve (relative) statistical accuracy, and calculates a full suite of output measures and visualisations. The simulation is run for the user-defined simulation period plus the user-defined warm-up period, and outputs then calculated based on the post-warm-up period (i.e. starting from 'normal' levels of occupancy rather than from empty).</p>
@@ -7022,9 +7019,15 @@ server <- function(input, output, session) {
       
       
       if (input$run_type == c("Trial Simulation")) {
-        cl <- makeCluster(min(c(2, max(
-          detectCores() - 1, 1
-        ))))
+        
+        #restrict to 2 (or 1) cores
+        #cl <- makeCluster(min(c(2, max(
+        #  detectCores() - 1, 1
+        #))))
+        
+        #set to use of n-1 cores
+        cl <- makeCluster(min(max(reps - 1, 1), detectCores() - 1))
+        
       }
       if (input$run_type == c("Full Simulation")) {
         cl <- makeCluster(min(max(reps - 1, 1), detectCores() - 1))
@@ -7070,7 +7073,7 @@ server <- function(input, output, session) {
       library(openxlsx)
       library(grid)
       library(gridExtra)
-      library(plotly)
+      #library(plotly)
       library(parallel)
       library(data.table)
       library(tidyverse)
@@ -7367,7 +7370,7 @@ server <- function(input, output, session) {
           library(openxlsx),
           library(grid),
           library(gridExtra),
-          library(plotly),
+          #library(plotly),
           library(tidyverse)
         )
       )
