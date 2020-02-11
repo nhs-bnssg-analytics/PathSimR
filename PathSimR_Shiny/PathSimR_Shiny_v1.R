@@ -50,6 +50,9 @@ colnames(m2) <- c("Exits")
 rownames(m2) <- c("Enter Names in Right Column")
 
 
+p1_sidebar <- source("./PathSimR_Shiny/code/ui_functions/p1_sidebar.R")
+
+
 #source("./PathSimR_Shiny/code/ui.R")
 #source("./PathSimR_Shiny/code/server.R")
 
