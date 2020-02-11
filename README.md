@@ -1,4 +1,7 @@
 # PathSimR
+
+THIS IS THE DEVELOPMENT BRANCH
+
 Discrete event simulation of healthcare pathways in R.
 
 To use PathSimR, download the entire **PathSimR_Shiny** folder, open the script **PathSimR_Shiny_v1.R** from that location and click the RunApp button. This will launch a Shiny app.
