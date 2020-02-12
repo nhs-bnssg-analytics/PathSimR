@@ -51,14 +51,17 @@ rownames(m2) <- c("Enter Names in Right Column")
 
 
 #UI pages
+
+source("./PathSimR_Shiny/code/ui_functions/overview_item_format.R")
+
 #Introduction
 introduction_sidebar <- source("./PathSimR_Shiny/code/ui_functions/introduction_sidebar.R")$value
 introduction_main <- source("./PathSimR_Shiny/code/ui_functions/introduction_main.R")$value
 #Overview & Glossary
 overview_overview <- source("./PathSimR_Shiny/code/ui_functions/overview_overview.R")$value
+overview_wizard <- source("./PathSimR_Shiny/code/ui_functions/overview_wizard.R")$value
+overview_output <- source("./PathSimR_Shiny/code/ui_functions/overview_output.R")$value
 
-ov_test <- source("./PathSimR_Shiny/code/ui_functions/test_test_test.R")$value
-#overview_wizard
 #overview_output
 
 #source("./PathSimR_Shiny/code/ui.R")
