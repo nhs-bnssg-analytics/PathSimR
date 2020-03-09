@@ -1,6 +1,7 @@
 server <- function(input, output, session) {
   ####Figures for Modals####
   
+  
   output$ext_arr_example = renderTable({
     data.frame(
       "Start Time" = c(0, 100, 150),
