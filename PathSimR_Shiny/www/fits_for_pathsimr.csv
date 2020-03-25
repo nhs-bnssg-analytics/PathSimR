@@ -1,0 +1,120 @@
+Names,Distribution,Parameter 1 Name,Parameter 1 Value,Parameter 2 Name,Parameter 2 Value
+General Surgery - All,log-normal,meanlog,0.050324111,sdlog,1.404570081
+General Surgery - Elective,log-normal,meanlog,0.647179702,sdlog,1.460274019
+General Surgery - Non_Elective,log-normal,meanlog,0.050324111,sdlog,1.404570081
+Urology - All,log-normal,meanlog,-0.084210607,sdlog,1.376966223
+Urology - Elective,exponential,rate,0.191497836,NA,NA
+Urology - Non_Elective,log-normal,meanlog,-0.084210607,sdlog,1.376966223
+Colorectal Surgery - All,log-normal,meanlog,0.12957807,sdlog,1.416275307
+Colorectal Surgery - Non_Elective,log-normal,meanlog,0.12957807,sdlog,1.416275307
+Hepatobiliary & Pancreatic Surgery - All,log-normal,meanlog,0.608996632,sdlog,1.377177143
+Hepatobiliary & Pancreatic Surgery - Non_Elective,log-normal,meanlog,0.608996632,sdlog,1.377177143
+Upper Gastrointestinal Surgery - All,log-normal,meanlog,0.060177032,sdlog,1.396438249
+Upper Gastrointestinal Surgery - Elective,log-normal,meanlog,0.384214395,sdlog,0.016337636
+Upper Gastrointestinal Surgery - Non_Elective,log-normal,meanlog,0.060177032,sdlog,1.396438249
+Vascular Surgery - All,gamma,shape,0.571560335,rate,0.064167897
+Vascular Surgery - Elective,log-normal,meanlog,0.810836051,sdlog,0.366318503
+Vascular Surgery - Non_Elective,gamma,shape,0.571560335,rate,0.064167897
+Trauma & Orthopaedics - All,gamma,shape,0.438821246,rate,0.069946862
+Trauma & Orthopaedics - Elective,log-normal,meanlog,0.348695142,sdlog,0.804722131
+Trauma & Orthopaedics - Non_Elective,gamma,shape,0.438821246,rate,0.069946862
+Ent - All,log-normal,meanlog,-0.124434692,sdlog,1.135113375
+Ent - Elective,exponential,rate,0.770222993,NA,NA
+Ent - Non_Elective,log-normal,meanlog,-0.124434692,sdlog,1.135113375
+Ophthalmology - All,log-normal,meanlog,-1.238927546,sdlog,1.957693436
+Ophthalmology - Non_Elective,log-normal,meanlog,-1.238927546,sdlog,1.957693436
+Oral Surgery - All,log-normal,meanlog,-0.311545737,sdlog,1.13258857
+Oral Surgery - Non_Elective,log-normal,meanlog,-0.311545737,sdlog,1.13258857
+Maxillo-facial Surgery - All,log-normal,meanlog,-0.191546438,sdlog,1.097996111
+Maxillo-facial Surgery - Elective,exponential,rate,0.100333324,NA,NA
+Maxillo-facial Surgery - Non_Elective,log-normal,meanlog,-0.191546438,sdlog,1.097996111
+Neurosurgery - All,log-normal,meanlog,1.513848965,sdlog,1.310378558
+Neurosurgery - Elective,log-normal,meanlog,1.044883601,sdlog,0.907416409
+Neurosurgery - Non_Elective,log-normal,meanlog,1.513848965,sdlog,1.310378558
+Plastic Surgery - All,log-normal,meanlog,-0.936072774,sdlog,1.655984999
+Plastic Surgery - Elective,exponential,rate,0.281735046,NA,NA
+Plastic Surgery - Non_Elective,log-normal,meanlog,-0.936072774,sdlog,1.655984999
+Paediatric Surgery - All,log-normal,meanlog,-0.21625215,sdlog,1.403258446
+Paediatric Surgery - Non_Elective,log-normal,meanlog,-0.21625215,sdlog,1.403258446
+Paediatric Trauma And Orthopaedics - All,log-normal,meanlog,-0.350789081,sdlog,1.425098343
+Paediatric Trauma And Orthopaedics - Non_Elective,log-normal,meanlog,-0.350789081,sdlog,1.425098343
+Paediatric Plastic Surgery - All,gamma,shape,0.083525928,rate,0.217864725
+Paediatric Plastic Surgery - Non_Elective,gamma,shape,0.083525928,rate,0.217864725
+Paediatric Medical Oncology - All,log-normal,meanlog,0.173558595,sdlog,1.425711679
+Paediatric Medical Oncology - Non_Elective,log-normal,meanlog,0.173558595,sdlog,1.425711679
+General Medicine - All,log-normal,meanlog,-0.868497921,sdlog,1.688911424
+General Medicine - Elective,exponential,rate,1.21558946,NA,NA
+General Medicine - Non_Elective,log-normal,meanlog,-0.868497921,sdlog,1.688911424
+Gastroenterology - All,log-normal,meanlog,0.41507519,sdlog,1.481127953
+Gastroenterology - Elective,exponential,rate,0.175697403,NA,NA
+Gastroenterology - Non_Elective,log-normal,meanlog,0.41507519,sdlog,1.481127953
+Endocrinology - All,log-normal,meanlog,0.108899656,sdlog,1.605408633
+Endocrinology - Elective,exponential,rate,0.394228876,NA,NA
+Endocrinology - Non_Elective,log-normal,meanlog,0.108899656,sdlog,1.605408633
+Clinical Haematology - All,gamma,shape,0.348882052,rate,0.065663691
+Clinical Haematology - Elective,exponential,rate,0.056885269,NA,NA
+Clinical Haematology - Non_Elective,gamma,shape,0.348882052,rate,0.065663691
+Diabetic Medicine - All,log-normal,meanlog,0.086091082,sdlog,1.511246275
+Diabetic Medicine - Non_Elective,log-normal,meanlog,0.086091082,sdlog,1.511246275
+Rehabilitation Service - All,gamma,shape,0.779921102,rate,0.030207599
+Rehabilitation Service - Non_Elective,gamma,shape,0.779921102,rate,0.030207599
+Cardiology - All,log-normal,meanlog,0.510340892,sdlog,1.202657164
+Cardiology - Elective,exponential,rate,0.346580156,NA,NA
+Cardiology - Non_Elective,log-normal,meanlog,0.510340892,sdlog,1.202657164
+Stroke Medicine - All,log-normal,meanlog,0.640947495,sdlog,1.520182315
+Stroke Medicine - Non_Elective,log-normal,meanlog,0.640947495,sdlog,1.520182315
+Respiratory Medicine - All,log-normal,meanlog,0.293329346,sdlog,1.540856171
+Respiratory Medicine - Elective,gamma,shape,0.278602781,rate,0.108882015
+Respiratory Medicine - Non_Elective,log-normal,meanlog,0.293329346,sdlog,1.540856171
+Infectious Diseases - All,log-normal,meanlog,0.506829399,sdlog,1.445697693
+Infectious Diseases - Non_Elective,log-normal,meanlog,0.506829399,sdlog,1.445697693
+Nephrology - All,gamma,shape,0.392894205,rate,0.083974074
+Nephrology - Elective,exponential,rate,0.189744189,NA,NA
+Nephrology - Non_Elective,gamma,shape,0.392894205,rate,0.083974074
+Medical Oncology - All,gamma,shape,0.39271425,rate,0.084834107
+Medical Oncology - Non_Elective,gamma,shape,0.39271425,rate,0.084834107
+Neurology - All,log-normal,meanlog,0.46085722,sdlog,1.584975571
+Neurology - Elective,gamma,shape,1018.925775,rate,203.7180136
+Neurology - Non_Elective,log-normal,meanlog,0.46085722,sdlog,1.584975571
+Paediatrics - Elective,log-normal,meanlog,0.384214395,sdlog,0.016337636
+Neonatology - All,log-normal,meanlog,0.730659661,sdlog,1.395136745
+Neonatology - Non_Elective,log-normal,meanlog,0.730659661,sdlog,1.395136745
+Geriatric Medicine - All,log-normal,meanlog,0.46913039,sdlog,1.691911985
+Geriatric Medicine - Non_Elective,log-normal,meanlog,0.46913039,sdlog,1.691911985
+Obstetrics - All,log-normal,meanlog,-0.736777201,sdlog,1.381282419
+Obstetrics - Elective,exponential,rate,17.8519767,NA,NA
+Obstetrics - Non_Elective,log-normal,meanlog,-0.736777201,sdlog,1.381282419
+Gynaecology - Elective,log-normal,meanlog,0.401436669,sdlog,0.397684923
+Adult Mental Illness - All,log-normal,meanlog,2.502976621,sdlog,1.377911039
+Adult Mental Illness - Non_Elective,log-normal,meanlog,2.502976621,sdlog,1.377911039
+Old Age Psychiatry - All,weibull,shape,1.119274859,scale,71.95656027
+Old Age Psychiatry - Non_Elective,weibull,shape,1.119274859,scale,71.95656027
+Clinical Oncology (previously Radiotherapy) - All,log-normal,meanlog,0.354329082,sdlog,1.703428983
+Clinical Oncology (previously Radiotherapy) - Elective,exponential,rate,0.346573755,NA,NA
+Clinical Oncology (previously Radiotherapy) - Non_Elective,log-normal,meanlog,0.354329082,sdlog,1.703428983
+Accident & Emergency - All,log-normal,meanlog,NA,sdlog,1.146302865
+Accident & Emergency - Non_Elective,log-normal,meanlog,NA,sdlog,1.146663849
+Cardiac Surgery - All,weibull,shape,1.257339547,scale,NA
+Clinical Immunology And Allergy Service - All,gamma,shape,5.659390047,rate,NA
+Clinical Immunology And Allergy Service - Elective,log-normal,meanlog,NA,sdlog,0.50072017
+Dermatology - All,log-normal,meanlog,NA,sdlog,0.58750399
+Dermatology - Elective,log-normal,meanlog,NA,sdlog,0.588753944
+Gynaecology - All,weibull,shape,0.823405187,scale,NA
+Gynaecology - Non_Elective,weibull,shape,0.803589633,scale,NA
+Medical Oncology - Elective,log-normal,meanlog,NA,sdlog,1.181082047
+Midwifery Service - All,log-normal,meanlog,NA,sdlog,1.44420355
+Midwifery Service - General,log-normal,meanlog,NA,sdlog,1.437666055
+Obstetrics - General,log-normal,meanlog,NA,sdlog,1.686625819
+Ophthalmology - Elective,log-normal,meanlog,NA,sdlog,0.931098853
+Oral Surgery - Elective,log-normal,meanlog,NA,sdlog,1.201833382
+Paediatric Surgery - Elective,log-normal,meanlog,NA,sdlog,1.298524765
+Paediatrics - All,log-normal,meanlog,NA,sdlog,1.139893218
+Paediatrics - Non_Elective,log-normal,meanlog,NA,sdlog,1.375471073
+Pain Management - All,log-normal,meanlog,NA,sdlog,0.765478234
+Pain Management - Elective,log-normal,meanlog,NA,sdlog,0.801907561
+Rheumatology - All,gamma,shape,2.586023713,rate,NA
+Rheumatology - Elective,log-normal,meanlog,NA,sdlog,0.684384667
+Spinal Surgery Service - All,log-normal,meanlog,NA,sdlog,1.502347862
+Spinal Surgery Service - Elective,log-normal,meanlog,NA,sdlog,1.634888913
+Well Babies - All,gamma,shape,1.792994457,rate,NA
+Well Babies - Non_Elective,gamma,shape,1.807658231,rate,NA
