@@ -1111,7 +1111,7 @@ server <- function(input, output, session) {
     }
   })
   
-  #### Creates the Var_input visual####
+  #### Creates the Var_input output table ####
   observeEvent(input$go, {
     output$var_view <- renderTable({
       var()
@@ -1121,7 +1121,7 @@ server <- function(input, output, session) {
   })
   
   
-  #### Creates the Cal_input visual####
+  #### Creates the Cal_input output table ####
   observeEvent(input$go, {
     output$cal_view <- renderTable({
       cal()
@@ -3776,25 +3776,37 @@ server <- function(input, output, session) {
   
   #### NETWORK VISUALISATION ####
   #uses function viz_fun which is in the script "network_visualisation.R", sourced in the parent script PathSimR_Shiny_v1.R
-  viz <- eventReactive(input$go_viz,{
+viz <- eventReactive(input$go_viz,{
     
-    viz_fun(thing1=input$w_temp,
+          list(
+            diag = viz_fun(thing1=input$w_temp,
                  inputfile1=input$file1,
                  inputfile2=input$file2,
                  thing2 = input$disp3,
             var = var(),
             cal=cal(),
-            output_next_button = output$next_button)
+            output_next_button = output$next_button),
+            
+            button = 
+    
+  output$next_button <- renderUI({
+    column(6, align = "center", actionButton(inputId = "j2PSR2", label = c(tagList(
+      "Next", icon("arrow-right")
+    ))))
+  })
+  
+          )
+  
   })
   
   
   
   output$network <- renderGrViz({
-    viz()
+    viz()$diag
   })
   
   checklist_viz <- eventReactive(input$checklist, {
-    viz()
+    viz()$diag
   })
   
   output$cl_viz <- renderGrViz({
@@ -10004,13 +10016,13 @@ server <- function(input, output, session) {
       
       #the plot "tisp" ####
       tisp <-
-        ggplot(data = total_in_system_dat) + geom_line(aes(x = time, y = value, group = rep),
-                                                       col = "black",
-                                                       alpha = 0.4) + 
-        theme_bw() + 
+        ggplot(data = total_in_system_dat) +
+        geom_line(aes(x = time, y = value, group = rep),
+                  col = "black",
+                  alpha = 0.4) +
+        theme_bw() +
         ylab("Total in System")
-      
-      
+
       
       #[which(avg_through_time$metric=="occupancy"),]
       
@@ -10986,6 +10998,17 @@ server <- function(input, output, session) {
     req(sim_out())
     x <- sim_out()
     tmp <- x$tisp
+    
+    if(input$toggle_tisp=="colour"){
+      tmp <- tmp +
+        geom_line(aes(x=time,
+                      y=value,
+                      colour=rep),
+                  alpha=0.5) +
+        theme_bw() +
+        ylab("Total in System")
+    }
+    
     tmp
     
   }, res = 175)

@@ -458,12 +458,12 @@ viz_fun <- function(thing1=input$w_temp,
   showTab(inputId = "navbar", target = "2. Simulation Setup & Run")
   
   #output$next_button
-  output_next_button <- renderUI({
-    column(6, align = "center", actionButton(inputId = "j2PSR2", label = c(tagList(
-      "Next", icon("arrow-right")
-    ))))
-    
-  })
+  # output_next_button <- renderUI({
+  #   column(6, align = "center", actionButton(inputId = "j2PSR2", label = c(tagList(
+  #     "Next", icon("arrow-right")
+  #   ))))
+  #   
+  # })
   
   
   

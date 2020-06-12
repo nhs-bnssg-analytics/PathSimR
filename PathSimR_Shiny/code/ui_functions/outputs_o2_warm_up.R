@@ -13,6 +13,17 @@ o2_warm_up_advice <- list(
                                    For highly dynamic systems, you may also need to consult the average through time tab to see how the number of people in each service point and queue is changing. The
                                    warm-up period can be determined in the same way as before but needs to be the time required for all metrics to stabilise."
     ),
+    
+    #toggle grey vs colour traces on the plot
+    
+    selectInput(
+      inputId = "toggle_tisp",
+      label = "Toggle grey vs colour traces on plot",
+      choices = list(Colour="colour",
+                     Grey="grey"),
+      selected="grey"
+    ),
+    
     plotOutput("tisp", height =
                  "850px")
     
