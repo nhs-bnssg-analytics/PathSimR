@@ -101,4 +101,10 @@ o10_queueing_summary <- source("./PathSimR_Shiny/code/ui_functions/outputs_o10_q
 #1.4.4 Download outputs and report ####
 download_outputs_sidebar <- source("./PathSimR_Shiny/code/ui_functions/download_outputs_sidebar.R")$value
 
+#2. Server 
+
+#network visualisation ####
+source("./PathSimR_Shiny/code/server_functions/network_visualisation.R")
+
+
 runApp("./PathSimR_Shiny/code")

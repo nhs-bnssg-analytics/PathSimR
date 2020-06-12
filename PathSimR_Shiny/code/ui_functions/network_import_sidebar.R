@@ -77,7 +77,9 @@ network_import <- list(
   ),
   
   
-  
+  #button to create the network diagram ####
+  #the "viz" object in the server listtens for this
+  #when go_viz changes, it runs the "viz" code
   fluidRow(column(
     12,
     align = "center",
