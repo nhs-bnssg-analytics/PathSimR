@@ -3,7 +3,13 @@ Discrete event simulation of healthcare pathways in R.
 
 To use PathSimR, download the entire **PathSimR_Shiny** folder, open the script **PathSimR_Shiny_v1.R** from that location and click the RunApp button. This will launch a Shiny app.
 
-If when clicking the RunApp button you get the error message ***Error in shinyAppDir(x) : No Shiny applciation exists at the path ""***, (which may happen depending on your local network settings), then run the folowing line in the console to launch the app: ***shiny::runApp("PathSimR_Shiny_v1.R")***.
+**Note: To use PathSimR you will need to install a previous version of the shinyalert package (it will not work with the most recent version, 1.1):** To do this, install the package *devtools*, and then run the code
+
+``devtools::install_version(package="shinyalert",version="1.0")``
+
+If when clicking the RunApp button you get the error message ***Error in shinyAppDir(x) : No Shiny applciation exists at the path ""***, (which may happen depending on your local network settings), then run the folowing line in the console to launch the app:
+
+``shiny::runApp("PathSimR_Shiny_v1.R")``.
 
 To use the tool, follow the instructions on the screen.
 
@@ -18,3 +24,5 @@ The remaining folders contain supplementary material to help with the use of Pat
 2. *Use Case Library* contains expamples of requirements, inputs, and outputs for four case studies, as an illustration of how the tool can be used
 
 3. *network_templates* contains sample input templates which can be loaded into the tool (as an alternative to using the inbuilt input wizard). They are intended to demonstrate features of the input format and not to represent real pathways. Files in this format can be downloaded, modified, and re-uploaded to PathSimR to save time, after an initial pathway has been created using the input wizard. A simple example of pair of input templates which will create an error are also included in this folder, as an aid to identifying problem inputs.
+
+**If you are having any problems running PathSimR, or have questions about its use, please email** bnssg.analytics@nhs.net
