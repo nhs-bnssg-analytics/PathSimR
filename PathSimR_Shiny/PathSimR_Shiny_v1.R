@@ -5879,7 +5879,8 @@ server <- function(input, output, session) {
       color = "black",
       fontcolor = "black",
       shape = "square",
-      tooltip = cal_tooltip
+      tooltip = cal_tooltip,
+      fixedsize = FALSE
     )
     
     
@@ -5892,7 +5893,8 @@ server <- function(input, output, session) {
       color = "black",
       fontcolor = "black",
       shape = "diamond",
-      tooltip = "Exit"
+      tooltip = "Exit",
+      fixedsize = FALSE
     )
     
     
