@@ -9,7 +9,6 @@
 # install.packages("parallel")
 # install.packages("data.table")
 # install.packages("tidyverse")
-# install.packages("shinyalert")
 # install.packages("shinyMatrix")
 # install.packages("fitdistrplus")
 # install.packages("shinyBS")
@@ -27,7 +26,6 @@ library(gridExtra)
 library(parallel)
 library(data.table)
 library(tidyverse)
-library(shinyalert)
 library(shinyMatrix)
 library(fitdistrplus)
 library(shinyBS)
@@ -1949,7 +1947,7 @@ ui <- navbarPage(
       
       # Main panel for displaying outputs -
       mainPanel(
-        useShinyalert(),
+       # useShinyalert(),
         fluidRow(
           column(4, align = "center", tableOutput("checklist_table_render")),
           column(8, grVizOutput("cl_viz"))
@@ -2609,8 +2607,9 @@ ui <- navbarPage(
       # Main panel for displaying outputs -
       mainPanel()
       
-    ),
-    useShinyalert()
+    )
+    #,
+    #useShinyalert()
   )
   
   
@@ -6283,22 +6282,28 @@ server <- function(input, output, session) {
       req(input$reps > 0)
     }
     
-    
-    shinyalert(
-      title = paste0("Simulation Running \n (Started at : ", format(Sys.time()), ")"),
-      text = "The simulation is now running. If there is an error, a new message box will appear with advice.",
-      closeOnEsc = FALSE,
-      closeOnClickOutside = FALSE,
-      html = FALSE,
-      type = "info",
-      showConfirmButton = FALSE,
-      showCancelButton = FALSE,
-      confirmButtonText = "OK",
-      confirmButtonCol = "#87D9FF",
-      timer = 0,
-      imageUrl = "",
-      animation = TRUE
-    )
+    showModal(modalDialog(
+      title = div(paste0("Simulation Running \n (Started at : ", format(Sys.time()), ")"),style="font-size:200%"), 
+      div("The simulation is now running. If there is an error, a new message box will appear with advice. Once the simulation is complete, a completion message will appear.", style="font-size:200%"),
+      easyClose = FALSE,
+      footer = NULL,
+      size="l"
+    ))
+    # shinyalert(
+    #   title = paste0("Simulation Running \n (Started at : ", format(Sys.time()), ")"),
+    #   text = "The simulation is now running. If there is an error, a new message box will appear with advice.",
+    #   closeOnEsc = FALSE,
+    #   closeOnClickOutside = FALSE,
+    #   html = FALSE,
+    #   type = "info",
+    #   showConfirmButton = FALSE,
+    #   showCancelButton = FALSE,
+    #   confirmButtonText = "OK",
+    #   confirmButtonCol = "#87D9FF",
+    #   timer = 0,
+    #   imageUrl = "",
+    #   animation = TRUE
+    # )
   }, priority = 2)
   
   
@@ -12490,37 +12495,57 @@ server <- function(input, output, session) {
       #the number being checked for is now 73
       #The reason for performing this check, and what it is intended to achieve, needs to be clarified
       if (length(combo) == 73) {
-        shinyalert(
-          title = paste0("Simulation Complete \n(", format(Sys.time()), ")"),
-          text = "",
-          closeOnEsc = TRUE,
-          closeOnClickOutside = TRUE,
-          html = FALSE,
-          type = "info",
-          showConfirmButton = TRUE,
-          showCancelButton = FALSE,
-          confirmButtonText = "OK",
-          confirmButtonCol = "#87D9FF",
-          timer = 0,
-          imageUrl = "",
-          animation = TRUE
-        )
+        
+        showModal(modalDialog(
+          title = div(paste0("Simulation Complete \n(", format(Sys.time()), ")"), style="font-size:200%"),
+          div("Click anywhere on screen to continue", style="font-size:200%"),
+          easyClose = TRUE,
+          footer = NULL,
+          size="l"
+        ))
+        
+        # shinyalert(
+        #   title = paste0("Simulation Complete \n(", format(Sys.time()), ")"),
+        #   text = "",
+        #   closeOnEsc = TRUE,
+        #   closeOnClickOutside = TRUE,
+        #   html = FALSE,
+        #   type = "info",
+        #   showConfirmButton = TRUE,
+        #   showCancelButton = FALSE,
+        #   confirmButtonText = "OK",
+        #   confirmButtonCol = "#87D9FF",
+        #   timer = 0,
+        #   imageUrl = "",
+        #   animation = TRUE
+        # )
       } else{
-        shinyalert(
+        
+        
+        showModal(modalDialog(
           title = "Simulation Error",
-          text = "",
-          closeOnEsc = TRUE,
-          closeOnClickOutside = TRUE,
-          html = FALSE,
-          type = "info",
-          showConfirmButton = TRUE,
-          showCancelButton = FALSE,
-          confirmButtonText = "OK",
-          confirmButtonCol = "E60000",
-          timer = 0,
-          imageUrl = "",
-          animation = TRUE
-        )
+          "",
+          easyClose = TRUE,
+          footer = NULL,
+          size="l"
+        ))
+        
+        
+        # shinyalert(
+        #   title = "Simulation Error",
+        #   text = "",
+        #   closeOnEsc = TRUE,
+        #   closeOnClickOutside = TRUE,
+        #   html = FALSE,
+        #   type = "info",
+        #   showConfirmButton = TRUE,
+        #   showCancelButton = FALSE,
+        #   confirmButtonText = "OK",
+        #   confirmButtonCol = "E60000",
+        #   timer = 0,
+        #   imageUrl = "",
+        #   animation = TRUE
+        # )
         
         hideTab(inputId = "navbar", target = "3. Simulation Outputs")
         hideTab(inputId = "navbar", target = "4. Download Outputs")
@@ -12530,24 +12555,36 @@ server <- function(input, output, session) {
       
       return(combo)
     }, error = function(e) {
-      shinyalert(
-        title = HTML(
-          'Simulation Error \n Try running the simulation for longer (increase simulation period length).
-      \n If the error persists, return to the data input pages and check that data has been entered correctly.'
-        ),
-        text = "",
-        closeOnEsc = FALSE,
-        closeOnClickOutside = FALSE,
-        html = FALSE,
-        type = "info",
-        showConfirmButton = TRUE,
-        showCancelButton = FALSE,
-        confirmButtonText = "OK",
-        confirmButtonCol = "#FF0000",
-        timer = 0,
-        imageUrl = "",
-        animation = FALSE
-      )
+      
+      showModal(modalDialog(
+        title = div("Simulation Error",style="font-size:200%"),
+        div("Try running the simulation for longer (increase simulation period length).
+      \n If the error persists, return to the data input pages and check that data has been entered correctly. Click anywhere on screen to continue.", style="font-size:200%"),
+        easyClose = TRUE,
+        footer = NULL,
+        size="l"
+      ))
+      
+      
+      
+      # shinyalert(
+      #   title = HTML(
+      #     'Simulation Error \n Try running the simulation for longer (increase simulation period length).
+      # \n If the error persists, return to the data input pages and check that data has been entered correctly.'
+      #   ),
+      #   text = "",
+      #   closeOnEsc = FALSE,
+      #   closeOnClickOutside = FALSE,
+      #   html = FALSE,
+      #   type = "info",
+      #   showConfirmButton = TRUE,
+      #   showCancelButton = FALSE,
+      #   confirmButtonText = "OK",
+      #   confirmButtonCol = "#FF0000",
+      #   timer = 0,
+      #   imageUrl = "",
+      #   animation = FALSE
+      # )
       
       hideTab(inputId = "navbar", target = "3. Simulation Outputs")
       hideTab(inputId = "navbar", target = "4. Download Outputs")
@@ -13551,22 +13588,29 @@ server <- function(input, output, session) {
       req(sim_out())
       x <- sim_out()
       
+      showModal(modalDialog(
+        title = div("Tables Rendering", style="font-size:200%"),
+        div("On completion, click anywhere to continue", style="font-size:200%"),
+        easyClose = FALSE,
+        footer = NULL,
+        size="l"
+      ))
       
-      shinyalert(
-        title = "Tables Rendering",
-        text = "",
-        closeOnEsc = FALSE,
-        closeOnClickOutside = FALSE,
-        html = FALSE,
-        type = "info",
-        showConfirmButton = FALSE,
-        showCancelButton = FALSE,
-        confirmButtonText = "OK",
-        confirmButtonCol = "#87D9FF",
-        timer = 0,
-        imageUrl = "",
-        animation = TRUE
-      )
+      # shinyalert(
+      #   title = "Tables Rendering",
+      #   text = "",
+      #   closeOnEsc = FALSE,
+      #   closeOnClickOutside = FALSE,
+      #   html = FALSE,
+      #   type = "info",
+      #   showConfirmButton = FALSE,
+      #   showCancelButton = FALSE,
+      #   confirmButtonText = "OK",
+      #   confirmButtonCol = "#87D9FF",
+      #   timer = 0,
+      #   imageUrl = "",
+      #   animation = TRUE
+      # )
       
       
       
@@ -13665,21 +13709,29 @@ server <- function(input, output, session) {
       write.xlsx(x = list_of_datasets, file = filename)
       
       
-      shinyalert(
-        title = "Tables Download Complete",
-        text = "",
-        closeOnEsc = TRUE,
-        closeOnClickOutside = TRUE,
-        html = FALSE,
-        type = "info",
-        showConfirmButton = TRUE,
-        showCancelButton = FALSE,
-        confirmButtonText = "OK",
-        confirmButtonCol = "#87D9FF",
-        timer = 0,
-        imageUrl = "",
-        animation = TRUE
-      )
+      showModal(modalDialog(
+        title = div("Tables Download Complete", style="font-size:200%"),
+        div("Click anywhere to continue", style="font-size:200%"),
+        easyClose = TRUE,
+        footer = NULL,
+        size="l"
+      ))
+      
+      # shinyalert(
+      #   title = "Tables Download Complete",
+      #   text = "",
+      #   closeOnEsc = TRUE,
+      #   closeOnClickOutside = TRUE,
+      #   html = FALSE,
+      #   type = "info",
+      #   showConfirmButton = TRUE,
+      #   showCancelButton = FALSE,
+      #   confirmButtonText = "OK",
+      #   confirmButtonCol = "#87D9FF",
+      #   timer = 0,
+      #   imageUrl = "",
+      #   animation = TRUE
+      # )
     }
   )
   
@@ -13691,21 +13743,31 @@ server <- function(input, output, session) {
     content = function(file) {
       req(sim_out())
       
-      shinyalert(
-        title = "Plots Rendering",
-        text = "",
-        closeOnEsc = FALSE,
-        closeOnClickOutside = FALSE,
-        html = FALSE,
-        type = "info",
-        showConfirmButton = FALSE,
-        showCancelButton = FALSE,
-        confirmButtonText = "OK",
-        confirmButtonCol = "#87D9FF",
-        timer = 0,
-        imageUrl = "",
-        animation = TRUE
-      )
+      
+      showModal(modalDialog(
+        title = div("Plots Rendering", style="font-size:200%"),
+        div("Plots will open in the default PDF reader from which they will need to be saved directly", style="font-size:200%"),
+        easyClose = FALSE,
+        footer = NULL,
+        size="l"
+      ))
+      
+      
+      # shinyalert(
+      #   title = "Plots Rendering",
+      #   text = "",
+      #   closeOnEsc = FALSE,
+      #   closeOnClickOutside = FALSE,
+      #   html = FALSE,
+      #   type = "info",
+      #   showConfirmButton = FALSE,
+      #   showCancelButton = FALSE,
+      #   confirmButtonText = "OK",
+      #   confirmButtonCol = "#87D9FF",
+      #   timer = 0,
+      #   imageUrl = "",
+      #   animation = TRUE
+      # )
       
       x <- sim_out()
       
@@ -13727,23 +13789,29 @@ server <- function(input, output, session) {
       dev.off()
       
       
+      showModal(modalDialog(
+        title = div("Plot Download Complete", style="font-size:200%"),
+        div("Click anywhere to continue", style="font-size:200%"),
+        easyClose = TRUE,
+        footer = NULL,
+        size="l"
+      ))
       
-      
-      shinyalert(
-        title = "Plot Download Complete",
-        text = "",
-        closeOnEsc = TRUE,
-        closeOnClickOutside = TRUE,
-        html = FALSE,
-        type = "info",
-        showConfirmButton = TRUE,
-        showCancelButton = FALSE,
-        confirmButtonText = "OK",
-        confirmButtonCol = "#87D9FF",
-        timer = 0,
-        imageUrl = "",
-        animation = TRUE
-      )
+      # shinyalert(
+      #   title = "Plot Download Complete",
+      #   text = "",
+      #   closeOnEsc = TRUE,
+      #   closeOnClickOutside = TRUE,
+      #   html = FALSE,
+      #   type = "info",
+      #   showConfirmButton = TRUE,
+      #   showCancelButton = FALSE,
+      #   confirmButtonText = "OK",
+      #   confirmButtonCol = "#87D9FF",
+      #   timer = 0,
+      #   imageUrl = "",
+      #   animation = TRUE
+      # )
       
     }
   )
@@ -13757,21 +13825,32 @@ server <- function(input, output, session) {
     filename = paste0("PathSimR_Report.docx"),
     
     content = function(file) {
-      shinyalert(
-        title = "Report Compiling",
-        text = "",
-        closeOnEsc = FALSE,
-        closeOnClickOutside = FALSE,
-        html = FALSE,
-        type = "info",
-        showConfirmButton = FALSE,
-        showCancelButton = FALSE,
-        confirmButtonText = "OK",
-        confirmButtonCol = "#87D9FF",
-        timer = 0,
-        imageUrl = "",
-        animation = TRUE
-      )
+      
+      showModal(modalDialog(
+        title = div("Report Compiling", style="font-size:200%"),
+        div("On completion, click anywhere to continue", style="font-size:200%"),
+        easyClose = FALSE,
+        footer = NULL,
+        size="l"
+      ))
+      
+      
+      
+      # shinyalert(
+      #   title = "Report Compiling",
+      #   text = "",
+      #   closeOnEsc = FALSE,
+      #   closeOnClickOutside = FALSE,
+      #   html = FALSE,
+      #   type = "info",
+      #   showConfirmButton = FALSE,
+      #   showCancelButton = FALSE,
+      #   confirmButtonText = "OK",
+      #   confirmButtonCol = "#87D9FF",
+      #   timer = 0,
+      #   imageUrl = "",
+      #   animation = TRUE
+      # )
       
       
       
@@ -13878,21 +13957,33 @@ server <- function(input, output, session) {
         envir = new.env(parent = globalenv())
       )
       
-      shinyalert(
-        title = "Report Download Complete",
-        text = "",
-        closeOnEsc = TRUE,
-        closeOnClickOutside = TRUE,
-        html = FALSE,
-        type = "info",
-        showConfirmButton = TRUE,
-        showCancelButton = FALSE,
-        confirmButtonText = "OK",
-        confirmButtonCol = "#87D9FF",
-        timer = 0,
-        imageUrl = "",
-        animation = TRUE
-      )
+      
+      showModal(modalDialog(
+        title = div("Report Download Complete", style="font-size:200%"),
+        div("Click anywhere to continue", style="font-size:200%"),
+        easyClose = TRUE,
+        footer = NULL,
+        size="l"
+      ))
+      
+      
+      
+      
+      # shinyalert(
+      #   title = "Report Download Complete",
+      #   text = "",
+      #   closeOnEsc = TRUE,
+      #   closeOnClickOutside = TRUE,
+      #   html = FALSE,
+      #   type = "info",
+      #   showConfirmButton = TRUE,
+      #   showCancelButton = FALSE,
+      #   confirmButtonText = "OK",
+      #   confirmButtonCol = "#87D9FF",
+      #   timer = 0,
+      #   imageUrl = "",
+      #   animation = TRUE
+      # )
       
     }
   )
