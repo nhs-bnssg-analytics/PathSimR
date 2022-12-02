@@ -1,20 +1,3 @@
-# install.packages("shiny")
-# install.packages("DiagrammeR")
-# install.packages("magrittr")
-# install.packages("readr")
-# install.packages("DT")
-# install.packages("openxlsx")
-# install.packages("grid")
-# install.packages("gridExtra")
-# install.packages("parallel")
-# install.packages("data.table")
-# install.packages("tidyverse")
-# install.packages("shinyMatrix")
-# install.packages("fitdistrplus")
-# install.packages("shinyBS")
-# install.packages("shinyjs")
-# install.packages("shinythemes")
-
 library(shiny)
 library(DiagrammeR)
 library(magrittr)
@@ -3634,6 +3617,7 @@ server <- function(input, output, session) {
   
   #### Creates the trial Cal_input ####
   cal <- eventReactive(input$go, {
+
     x <- input$sp
     x <- unique(x)
     rownames(x) <- 1:nrow(x)
@@ -3661,7 +3645,7 @@ server <- function(input, output, session) {
     ## External Arrival
     ea = lapply(1:node_number, function(i) {
       x <- as.data.frame(input[[paste0("ext_arr_", i)]])
-      x <- head(x, -1)
+      # x <- head(x, -1)
       if (nrow(x) > 0) {
         x <- cbind("ext_arr", paste0(node_names[i]), x)
         colnames(x) <- c("metric", "node", "start", "end", "value")
@@ -3683,7 +3667,7 @@ server <- function(input, output, session) {
     ## Capacity
     cap = lapply(1:node_number, function(i) {
       x <- as.data.frame(input[[paste0("cap_", i)]])
-      x <- head(x, -1)
+      # x <- head(x, -1)
       if (nrow(x) > 0) {
         x <- cbind("cap", paste0(node_names[i]), x)
         colnames(x) <- c("metric", "node", "start", "end", "value")
@@ -3786,7 +3770,7 @@ server <- function(input, output, session) {
     ### Testing if the transition matrix has rowsums of 1###
     
     f <- var[1:node_number, 1:length(all_names)]
-    indx <- sapply(f, is.factor)
+    indx <- sapply(f, is.character)
     f[indx] <-
       lapply(f[indx], function(x)
         as.numeric(as.character(x)))
@@ -4207,7 +4191,6 @@ server <- function(input, output, session) {
     }
     
     ### Testing that nodes that have 2+ lines in the calendar have any values in the start and end columns ###
-    
     value_test <- as.data.frame(cal)
     
     for (j in c("cap", "ext_arr")) {
